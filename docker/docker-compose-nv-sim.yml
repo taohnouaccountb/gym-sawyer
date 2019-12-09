@@ -25,3 +25,10 @@ services:
       args:
         - PARENT_IMAGE=gym-sawyer/nvidia-ros-moveit
     image: gym-sawyer/nvidia-sawyer-sim
+  taoyao-sim:
+    build:
+      context: .
+      dockerfile: Dockerfile.taoyao
+      args:
+        - PARENT_IMAGE=gym-sawyer/nvidia-sawyer-sim
+    image: gym-sawyer/taoyao-sim
