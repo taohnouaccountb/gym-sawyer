@@ -1,0 +1,20 @@
+ARG PARENT_IMAGE=ubuntu:16.04
+FROM $PARENT_IMAGE
+
+RUN echo "source /opt/ros/kinetic/setup.bash" >> "/root/.bashrc"
+
+RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y install \
+    vim grep wget \
+    ros-kinetic-rqt ros-kinetic-rqt-common-plugins \
+    python-catkin-tools \
+    python3-pip \
+    python-pip \
+    software-properties-common apt-transport-https \
+    && \
+    pip3 install python-vagrant
+
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
+    && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y install \
+    code
