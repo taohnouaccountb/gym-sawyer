@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y install \
     python3-pip \
     python-pip \
     software-properties-common apt-transport-https \
+    libglfw3-dev libglfw3 \
     && \
     pip3 install python-vagrant
 
