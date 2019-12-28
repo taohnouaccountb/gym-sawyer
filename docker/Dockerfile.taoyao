@@ -11,11 +11,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y install \
     python-pip \
     software-properties-common apt-transport-https \
     libglfw3-dev libglfw3 \
+    gdb \
     && \
-    pip3 install python-vagrant
-
-RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
-    && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-
-RUN DEBIAN_FRONTEND=noninteractive apt update && apt -y install \
-    code
+    pip3 install python-vagrant gdbgui

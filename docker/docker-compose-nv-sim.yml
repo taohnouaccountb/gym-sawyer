@@ -31,4 +31,6 @@ services:
       dockerfile: Dockerfile.taoyao
       args:
         - PARENT_IMAGE=gym-sawyer/nvidia-sawyer-sim
+    environment: 
+      expose: "5000"
     image: gym-sawyer/taoyao-sim
