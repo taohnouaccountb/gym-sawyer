@@ -91,6 +91,23 @@ run-taoyao-sim: build-nvidia-sawyer-sim
 		--name "sawyer-sim" \
 		gym-sawyer/taoyao-sim
 
+run-taoyao-sim-traj:
+	xhost +local:docker
+	docker run \
+		--init \
+		-t \
+		--rm \
+		--gpus all \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-v ~/docker_volumes/persist:/root/persist \
+		-v ~/docker_volumes/shared/:/root/shared \
+		--expose 8888 \
+		-e DISPLAY="${DISPLAY}" \
+		-e QT_X11_NO_MITSHM=1 \
+		--net="host" \
+		--name "sawyer-sim" \
+		gym-sawyer/taoyao-sim:traj_notebook
+
 run-nvidia-sawyer-robot: build-nvidia-sawyer-robot
 ifeq (,$(ADD_HOST))
 	$(error Set the environment variables SAWYER_HOST and SAWYER_IP)
